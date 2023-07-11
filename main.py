@@ -7,11 +7,25 @@ TRUMP = [
 'd1','d2','d3','d4','d5','d6','d7','d8','d9','d10','d11','d12','d13'
 ]
 member = ['a', 'b', 'c', 'd', 'e']
-given = 2
+given = 5
 
 Cards = card(TRUMP, member, given)
-car = Cards.show()
+car = Cards.show_deck()
 player_hands = Cards.partition()
+CHECK_DECK = Cards.check_deck()
 
+
+#Cards.draw(player_hands, member[0], 2)
+
+"""
+while CHECK_DECK:
+    pass
+"""
 print(player_hands)
-Cards.draw(player_hands, member[0], 2)
+
+draw = Cards.draw(player_hands, member[0], 26)
+
+draw = Cards.draw(player_hands, member[1], 22)
+
+print(car)
+print(Cards.show_hand(player_hands, member[1]))

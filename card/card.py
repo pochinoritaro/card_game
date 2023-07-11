@@ -15,8 +15,19 @@ class card:
             self.given = given
             #print(self.given)
 
-    def show(self):
+    def show_hand(self, hand, show_player):
+        return hand[show_player]
+
+    def show_deck(self):
         return self.cards
+
+    def check_deck(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except:
+                print("ドローできるカードがありません。")
+        return wrapper
 
     def partition(self) -> object :
         deck = self.cards
@@ -38,9 +49,9 @@ class card:
 
         except ValueError:
             return "カードが切れました。"
-        self.cards = deck
         return dict(mem_hand)
 
+    @check_deck
     def draw(self, add_card_dict: dict, draw_player, draw_count: int):
         for count in range(0, draw_count):
             hand = []
