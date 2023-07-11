@@ -1,3 +1,9 @@
+"""
+caption
+
+Args
+
+"""
 import random
 from collections import defaultdict
 
@@ -16,12 +22,48 @@ class card:
             #print(self.given)
 
     def show_hand(self, hand, show_player):
+        """
+        Args:
+
+        Returns:
+            
+        Raises:
+
+        Yields:
+            
+        Example:
+            draw = Cards.draw(player_hands, member[0], 26)
+        """
         return hand[show_player]
 
     def show_deck(self):
+        """
+        Args:
+
+        Returns:
+            
+        Raises:
+
+        Yields:
+            
+        Example:
+            draw = Cards.draw(player_hands, member[0], 26)
+        """
         return self.cards
 
     def check_deck(func):
+        """
+        Args:
+
+        Returns:
+            
+        Raises:
+
+        Yields:
+            
+        Example:
+            draw = Cards.draw(player_hands, member[0], 26)
+        """
         def wrapper(*args, **kwargs):
             try:
                 return func(*args, **kwargs)
@@ -30,6 +72,18 @@ class card:
         return wrapper
 
     def partition(self) -> object :
+        """
+        Args:
+            None
+        Returns:
+            object(dict)
+        Raises:
+            None
+        Yields:
+            プレイヤーと初期ドロー数を設定して
+        Example:
+            draw = Cards.draw(player_hands, member[0], 26)
+        """
         deck = self.cards
         mem_hand = defaultdict(list)
         for count in range(0, self.given):
@@ -48,6 +102,18 @@ class card:
 
     @check_deck
     def draw(self, add_card_dict: dict, draw_player, draw_count: int):
+        """
+        Args:
+
+        Returns:
+            
+        Raises:
+
+        Yields:
+            
+        Example:
+            draw = Cards.draw(player_hands, member[0], 26)
+        """
         for count in range(0, draw_count):
             hand = []
             take = self.cards.pop(random.randrange(0, len(self.cards)))
