@@ -32,23 +32,18 @@ class card:
     def partition(self) -> object :
         deck = self.cards
         mem_hand = defaultdict(list)
-        try:
-            for count in range(0, self.given):
-                for member_cards in self.member:
-                    hand = []
-                    take = deck.pop(random.randrange(0, len(deck)))
-                    hand.append(take)
-                    mem_hand[member_cards].append(take)
-
-                if self.ALL_FLAG:
-                    for count in range(1, self.mod + 1):
-                        take = deck.pop(random.randrange(0, count))
-                        for mod_cards in random.sample(self.member, self.mod):
-                            mem_hand[mod_cards].append(take)
-                            self.mod -= 1
-
-        except ValueError:
-            return "カードが切れました。"
+        for count in range(0, self.given):
+            for member_cards in self.member:
+                hand = []
+                take = deck.pop(random.randrange(0, len(deck)))
+                hand.append(take)
+                mem_hand[member_cards].append(take)
+            if self.ALL_FLAG:
+                for count in range(1, self.mod + 1):
+                    take = deck.pop(random.randrange(0, count))
+                    for mod_cards in random.sample(self.member, self.mod):
+                        mem_hand[mod_cards].append(take)
+                        self.mod -= 1
         return dict(mem_hand)
 
     @check_deck
