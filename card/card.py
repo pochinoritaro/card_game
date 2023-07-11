@@ -1,7 +1,7 @@
 import random
 from collections import defaultdict
 
-class CardSet:
+class card:
     def __init__(self, cards, member, given):
         self.cards = cards
         self.member = member
@@ -9,16 +9,16 @@ class CardSet:
             self.ALL_FLAG = True
             self.given, mod = divmod(len(cards), len(member))
             self.mod = mod
-            print(self.mod)
+            #print(self.mod)
         else:
             self.ALL_FLAG = False
             self.given = given
-            print(self.given)
+            #print(self.given)
 
-    def show_cards(self):
+    def show(self):
         return self.cards
 
-    def partition_card(self) -> object :
+    def partition(self) -> object :
         deck = self.cards
         mem_hand = defaultdict(list)
         try:
@@ -39,7 +39,15 @@ class CardSet:
         except ValueError:
             return "カードが切れました。"
         self.cards = deck
-        return mem_hand, deck
+        return dict(mem_hand)
+
+    def draw(self, add_card_dict: dict, draw_player, draw_count: int):
+        for count in range(0, draw_count):
+            hand = []
+            take = self.cards.pop(random.randrange(0, len(self.cards)))
+            hand.append(take)
+            add_card_dict[draw_player].append(take)
+        return dict(add_card_dict)
 
 if __name__ == "__main__":
     cards = [
@@ -50,6 +58,6 @@ if __name__ == "__main__":
 	]
     member = ['a', 'b', 'c', 'd', 'e']
     given = 0
-    CardIns = CardSet(cards, member, given)
+    CardIns = card(cards, member, given)
 
-    print(CardIns.partition_card())
+    print(CardIns.partition())

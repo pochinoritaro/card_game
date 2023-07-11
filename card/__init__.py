@@ -1,1 +1,1 @@
-from .card import CardSet
+from .card import card
