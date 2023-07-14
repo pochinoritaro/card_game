@@ -1,0 +1,9 @@
+{
+	"black_jack" : {
+		"hand" : 10,
+		"draw" : 1,
+		"min_player" : 1,
+		"max_player" : 4,
+		"clockwise" : "True"
+	}
+}
